@@ -23,7 +23,8 @@ AD_LINKS = ['doubleclick.net',
             's.viiadr.com',
             'rtb.com.ru',
             'exchange.buzzoola.com',
-            'ad.adriver.ru'
+            'ad.adriver.ru',
+            's0.2mdn.net'
             ]
 
 BAD_PREFIXES = [
@@ -97,7 +98,8 @@ class LinkCleaner():
         return link
 
     def clean_speeders(self, link):
-        if re.match(r'\.turbopages\.org$', link):
+        if re.search(r'\.turbopages\.org', link):
+            link = re.sub(r'\.turbopages\.org', '', link)
             link = re.sub(r'-', '.', link)
             link = re.sub(r'\.\.', '-', link)
         return link
